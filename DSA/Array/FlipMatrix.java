@@ -1,0 +1,50 @@
+public class FlipMatrix {
+    public int Flip(int[][] arr) {
+        int m = arr.length;
+        int n = arr[0].length;
+        for (int i = 0; i < m; i++) {
+            if (arr[i][0] == 0) {
+                for (int j = 0; j < n; j++) {
+                    if (arr[i][j] == 0) {
+                        arr[i][j] = 1;
+                    } else {
+                        arr[i][j] = 0;
+                    }
+                }
+            }
+        }
+
+        for (int j = 0; j < n; j++) {
+            int noOfZero = 0;
+            int noOfOnes = 0;
+            for (int i = 0; i < m; i++) {
+                if (arr[i][j] == 0) {
+                    noOfZero++;
+                } else
+                    noOfOnes++;
+            }
+            if (noOfZero > noOfOnes) {
+                for (int i = 0; i < m; i++) {
+                    if (arr[i][j] == 0) {
+                        arr[i][j] = 1;
+                    } else {
+                        arr[i][j] = 0;
+                    }
+                }
+            }
+        }
+
+        int score = 0;
+        int x = 1;
+        for (int j = n - 1; j >= 0; j--) {
+            for (int i = 0; i < m; i++) {
+                score += (arr[i][j] * x);
+            }
+            x = x * 2;
+        }
+        return score;
+    }
+    public static void main(String[] args) {
+
+    }
+}

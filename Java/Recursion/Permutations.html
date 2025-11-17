@@ -1,0 +1,33 @@
+1. printPermutations("ABC", "")
+   ├── i=0: ch='A', rest="BC" → 2. printPermutations("BC", "A")
+   │       ├── i=0: ch='B', rest="C" → 3. printPermutations("C", "AB")
+   │       │       └── i=0: ch='C', rest="" → 4. printPermutations("", "ABC")
+   │       │               → Base case: print "ABC"
+   │       │               ← return to call 3
+   │       └── i=1: ch='C', rest="B" → 5. printPermutations("B", "AC")
+   │               └── i=0: ch='B', rest="" → 6. printPermutations("", "ACB")
+   │                       → Base case: print "ACB"
+   │                       ← return to call 5
+   │               ← return to call 2
+   │
+   ├── i=1: ch='B', rest="AC" → 7. printPermutations("AC", "B")
+   │       ├── i=0: ch='A', rest="C" → 8. printPermutations("C", "BA")
+   │       │       └── i=0: ch='C', rest="" → 9. printPermutations("", "BAC")
+   │       │               → Base case: print "BAC"
+   │       │               ← return to call 8
+   │       └── i=1: ch='C', rest="A" → 10. printPermutations("A", "BC")
+   │               └── i=0: ch='A', rest="" → 11. printPermutations("", "BCA")
+   │                       → Base case: print "BCA"
+   │                       ← return to call 10
+   │               ← return to call 7
+   │
+   └── i=2: ch='C', rest="AB" → 12. printPermutations("AB", "C")
+           ├── i=0: ch='A', rest="B" → 13. printPermutations("B", "CA")
+           │       └── i=0: ch='B', rest="" → 14. printPermutations("", "CAB")
+           │               → Base case: print "CAB"
+           │               ← return to call 13
+           └── i=1: ch='B', rest="A" → 15. printPermutations("A", "CB")
+                   └── i=0: ch='A', rest="" → 16. printPermutations("", "CBA")
+                           → Base case: print "CBA"
+                           ← return to call 15
+                   ← return to call 12
